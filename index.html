@@ -30,7 +30,30 @@
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
     }
     *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,#fbfdff 0%, #f3f7ff 100%);color:#0f172a;line-height:1.45}
+   body{
+  margin:0;
+  min-height:100vh;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:#0f172a;
+  line-height:1.45;
+
+  /* Katman 1: ana lineer degrade (açık mavi -> açık gri) */
+  /* Katman 2: sol üstten yumuşak radial parlama (zenginlik katar) */
+  /* Katman 3: üstten hafif parlama/overlay (derinlik) */
+  /* Katman 4: çok ince noise SVG (dokulu görünüm) */
+  background-color: #F4F6F8;
+  background-image:
+    linear-gradient(180deg, #EAF6FF 0%, #F4F6F8 100%),
+    radial-gradient(800px 420px at 12% 10%, rgba(255,255,255,0.75), transparent 18%),
+    linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.02) 30%, rgba(0,0,0,0) 100%),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><filter id="n"><feTurbulence baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.06"/></feComponentTransfer></filter><rect width="100%" height="100%" filter="url(%23n)" /></svg>');
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+  background-size: cover, 800px 420px, 100% 100%, 200px 200px;
+  background-blend-mode: normal, screen, overlay, normal;
+
+  /* Sayfa içeriğinin üst üste binmemesi için (mevcut layout ile uyumlu) */
+  display: block;
+}
     .container{max-width:1400px;margin:0 auto;padding:28px}
 
     /* Header */

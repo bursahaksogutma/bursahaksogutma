@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Bursa Hak Soğutma | Kurumsal Tanıtım</title>
+<!-- Google Font (kullanıcı internet bağlantısı ile yüklenecektir) -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+    
+    :root {
+      --accent:#004080;
+      --accent-2:#00BFFF;
+      --muted:#5c6b80;
+      --bg:#f7fbff;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.8);
+      --radius:12px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    
+      --accent:#0066FF; /* ana vurgu rengi - isteğe göre değiştir */
+      --accent-2:#00C2A8; /* ikincil renk */
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --card:#f8fafc;
+      --glass: rgba(255,255,255,0.7);
+      --radius:12px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#fbfdff 0%, #f3f7ff 100%);color:#0f172a;line-height:1.45}
+    .container{max-width:1400px;margin:0 auto;padding:28px}
+
+    /* Header */
+    header{background:transparent;backdrop-filter:blur(6px);position:sticky;top:0;z-index:60}
+    .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:18px}
+    .brand h1{margin:0;font-size:18px}
+    .contact{display:flex;flex-direction:column;align-items:flex-end}
+    .contact .phone{font-weight:700}
+    .contact small{color:var(--muted)}
+
+    /* Nav */
+    nav{display:flex;gap:22px;align-items:center}
+    .nav-link{padding:8px 12px;border-radius:10px;text-decoration:none;color:inherit;font-weight:600}
+    .nav-link:hover{background:rgba(0,0,0,0.04)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:40px 0}
+    .hero-card{background:var(--card);padding:30px;border-radius:18px;box-shadow:0 8px 30px rgba(16,24,40,0.06)}
+    .hero h2{margin:0 0 8px;font-size:28px}
+    .hero p{margin:0 0 18px;color:var(--muted)}
+    .cta{display:inline-block;padding:12px 18px;border-radius:12px;background:var(--accent);color:white;text-decoration:none;font-weight:700}
+    .hero-image{height:260px;border-radius:14px;background:linear-gradient(135deg, rgba(0,102,255,0.12), rgba(0,194,168,0.08));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted)}
+
+    /* Sections */
+    section{padding:44px 0}
+    .sec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:white;padding:18px;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,0.04);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;}
+    .card:hover {
+      transform: translateY(-8px) scale(1.05);
+      background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(0,194,168,0.1));
+      box-shadow: 0 10px 30px rgba(0,102,255,0.3);
+    }
+    .brands{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+    .brand-logo{width:140px;height:70px;border-radius:8px;background:linear-gradient(90deg,#eef2ff,#f0fdf4);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted)}
+
+    /* Footer */
+    footer{background:linear-gradient(180deg,#f8fafc 0%, #eef2ff 100%);padding:28px;border-radius:18px;margin-top:18px}
+    .footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .brand-logo{width:120px}
+      .container{padding:18px}
+    }
+    @media (max-width:640px){
+      nav{display:none}
+      .topbar{gap:12px}
+      .cards{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr}
+      .contact{align-items:flex-start}
+      .brand h1{font-size:16px}
+    }
+
+    /* Small helpers */
+    .muted{color:var(--muted)}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,0.04);font-weight:600}
+
+    /* map responsive */
+    .map-wrap{border-radius:12px;overflow:hidden}
+
+    /* simple brand carousel (js) */
+    .brand-scroller{display:flex;gap:12px;overflow:auto;padding:12px 0}
+    .brand-scroller::-webkit-scrollbar{height:10px}
+  
+/* Hizmetlerimiz kutucukları - pastel kurumsal renkler */
+#hizmetler .card:nth-child(1) {
+  background: linear-gradient(135deg, #e6f2ff, #f0fbff);
+  border: 1px solid rgba(0,102,255,0.15);
+}
+
+#hizmetler .card:nth-child(2) {
+  background: linear-gradient(135deg, #f2f0ff, #f7faff);
+  border: 1px solid rgba(102,0,255,0.15);
+}
+
+#hizmetler .card:nth-child(3) {
+  background: linear-gradient(135deg, #fff7e6, #fffaf0);
+  border: 1px solid rgba(255,170,0,0.2);
+}
+
+#hizmetler .card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 12px 28px rgba(0,102,255,0.2);
+  border: 1px solid rgba(0,102,255,0.25);
+  background: linear-gradient(135deg, rgba(0,102,255,0.08), rgba(0,194,168,0.08));
+}
+
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+}
+.hero-card {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+/* Üst bar düzeni: logo solda, iletişim sağda */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  gap: 4px;
+}
+
+.contact .phone {
+  font-weight: 700;
+  font-size: 16px;
+  color: #004080;
+}
+
+.contact small {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+
+/* Header three-column layout: brand | spacer | right contacts */
+.topbar { display:flex; align-items:center; gap:16px; }
+.header-spacer { flex: 1 1 auto; }
+/* Ensure contact-right content aligns to right */
+.contact-right { display:flex; flex-direction:column; align-items:flex-end; text-align:right; }
+/* Make logo and brand remain left */
+.brand { display:flex; align-items:center; gap:14px; }
+/* Slight spacing for phone and support */
+.contact-right .phone { font-weight:700; color: #004080; font-size:16px; }
+.contact-right small { color: var(--muted); font-size:13px; }
+/* Responsive adjustments */
+@media (max-width:640px){
+  .topbar { flex-direction:column; align-items:flex-start; }
+  .header-spacer { display:none; }
+  .contact-right { align-items:flex-start; text-align:left; margin-top:8px; }
+}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<div class="topbar"><div class="brand"><img alt="Bursa Hak Soğutma Logo" src="C:\Users\oznur\OneDrive\Masaüstü\site\logo.jpg" style="height:200px;border-radius:120px;"/>
+<h4><p><font face="Arial">BURSA HAK SOĞUTMA </font></p></h4>
+<div class="small">Modern • Kurumsal • Güvenilir</div>
+
+</div><div class="header-spacer"></div><div class="contact-right"><div class="contact">
+<div class="phone">
+  <a href="tel:+905302193306" style="text-decoration:none;color:#004080;font-weight:700;">
+    📞 +90 530 219 33 06
+  </a>
+  &nbsp; - &nbsp;
+  <a href="https://wa.me/905055143306?text=Merhaba,%20Bursa%20Hak%20Soğutma%20sitesinden%20yazıyorum."
+     style="text-decoration:none;color:#25D366;font-weight:700;">
+    💬 0505 514 33 06
+  </a>
+</div>
+<small class="muted">7/24 WhatsApp ile destek</small></div></div></div>
+<div style="background:linear-gradient(90deg, var(--accent), var(--accent-2));padding:10px 0;text-align:center;">
+<a href="#hakkimizda" style="color:white;font-weight:600;margin:0 14px;text-decoration:none;">Hakkımızda</a>
+<a href="#hizmetler" style="color:white;font-weight:600;margin:0 14px;text-decoration:none;">Hizmetlerimiz</a>
+<a href="#markalar" style="color:white;font-weight:600;margin:0 14px;text-decoration:none;">Çalıştığımız Markalar</a>
+<a href="#iletisim" style="color:white;font-weight:600;margin:0 14px;text-decoration:none;">İletişim</a>
+</div>
+<style>
+  /* Üst Menü Efekti */
+  header div[style*="linear-gradient(90deg"] a {
+    position: relative;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+  header div[style*="linear-gradient(90deg"] a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00BFFF, #004080);
+    transition: width 0.4s ease;
+  }
+  header div[style*="linear-gradient(90deg"] a:hover::after {
+    width: 100%;
+  }
+  header div[style*="linear-gradient(90deg"] a:hover {
+    transform: scale(1.1);
+    color: #fff;
+  }
+</style>
+</div></header>
+<main>
+<div class="container">
+
+<section class="hero">
+  <div class="hero-card" style="text-align:center;">
+    <h2>Soğutma Sistemleri ve Teknik Servis Hizmetleri</h2>
+    <p class="small muted">Klima, kombi, petek, beyaz eşya ve küçük ev aletleri bakım & onarım hizmetlerinde profesyonel çözümler.</p>
+
+    <!-- Carousel -->
+    <div class="carousel">
+      <div class="slides">
+        <img src="C:\Users\oznur\OneDrive\Masaüstü\site\kombi.png"/>
+        <img src="C:\Users\oznur\OneDrive\Masaüstü\site\klima.png" />
+        <img src="C:\Users\oznur\OneDrive\Masaüstü\site\petek.png" />
+        <img src="C:\Users\oznur\OneDrive\Masaüstü\site\beyaz-esya.png"/>
+      </div>
+      <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.carousel {
+  position: relative;
+  max-width:900px;
+  margin: 30px auto;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+.carousel .slides {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+.carousel img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 18px;
+}
+.carousel img {
+  height: 550px;  /* örnek: 350px veya 300px */
+  object-fit: cover; /* oranı korur */
+}
+.dots {
+  text-align: center;
+  margin-top: 12px;
+}
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+.dot.active {
+  background-color: #004080;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelector('.slides');
+  const dots = document.querySelectorAll('.dot');
+  let index = 0;
+
+  function showSlide(i) {
+    slides.style.transform = `translateX(-${i * 100}%)`;
+    dots.forEach(d => d.classList.remove('active'));
+    dots[i].classList.add('active');
+  }
+
+  setInterval(() => {
+    index = (index + 1) % 4;
+    showSlide(index);
+  }, 4000);
+});
+</script>
+
+<style>
+  /* Renkli cam efektli kutular */
+  .info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+  }
+
+  .info-card {
+    background: linear-gradient(135deg, rgba(0,102,255,0.25), rgba(0,194,168,0.25));
+    border-radius: 20px;
+    padding: 25px;
+    color: #0f172a;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.4);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.5s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(0,102,255,0.4);
+    background: linear-gradient(135deg, rgba(0,194,255,0.4), rgba(0,255,200,0.4));
+  }
+
+  .info-card h4 {
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #004080, #00BFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .info-card p {
+    color: #1e293b;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Ortak arka planı vurgulamak için hafif degrade alan */
+  #hakkimizda {
+    background: linear-gradient(180deg, #eaf5ff 0%, #f0fbff 100%);
+    border-radius: 18px;
+    padding: 50px 20px;
+  }
+
+  #hakkimizda h3 {
+    text-align: center;
+    color: var(--accent);
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+</style>
+<section id="hakkimizda">
+<h3>Hakkımızda</h3>
+<div class="info-cards">
+<div class="info-card">
+<h4>Biz Kimiz?</h4>
+<p>1974’ten bu yana Bursa Hak Soğutma olarak beyaz eşya, klima, kombi, petek ve küçük ev aletleri bakım &amp; onarımında güvenilir hizmet sunuyoruz. Deneyimimizle daima hızlı, ekonomik ve kaliteli çözümler üretiyoruz.</p>
+</div>
+<div class="info-card">
+<h4>Vizyonumuz</h4>
+<p>Soğutma ve ısıtma sistemlerinde teknolojiyi ve kaliteyi bir araya getirerek Bursa ve çevresinde sektörün en güvenilir markası olmak. Müşteri memnuniyetini her şeyin önünde tutuyoruz.</p>
+</div>
+<div class="info-card">
+<h4>Değerlerimiz</h4>
+<p>Şeffaflık, dürüstlük, güvenilirlik, sürdürülebilir kalite ve müşteri odaklı yaklaşım. Her zaman uzun vadeli güven ilişkileri kurmayı hedefliyoruz.</p>
+</div>
+</div>
+<style>
+  /* MARKALAR RENKLİ KART TASARIMI */
+  #markalar {
+    background: linear-gradient(180deg, #f0f8ff 0%, #e6faff 100%);
+    padding: 60px 20px;
+    border-radius: 18px;
+  }
+
+  #markalar h3 {
+    text-align: center;
+    color: var(--accent);
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .brand-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 18px;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .brand-card {
+    width: 100%;
+    height: 90px;
+    background: linear-gradient(135deg, rgba(0,102,255,0.2), rgba(0,194,168,0.25));
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 16px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255,255,255,0.4);
+  }
+
+  .brand-card:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 12px 28px rgba(0,102,255,0.3);
+    background: linear-gradient(135deg, rgba(0,194,255,0.4), rgba(0,255,200,0.4));
+  }
+</style>
+<section id="markalar">
+<h3>Çalıştığımız Markalar</h3>
+<div class="brand-grid">
+<div class="brand-card">Arçelik</div>
+<div class="brand-card">Bosch</div>
+<div class="brand-card">Profilo</div>
+<div class="brand-card">Siemens</div>
+<div class="brand-card">Samsung</div>
+<div class="brand-card">Vestel</div>
+<div class="brand-card">Beko</div>
+<div class="brand-card">LG</div>
+<div class="brand-card">Demir Döküm</div>
+<div class="brand-card">Uğur</div>
+<div class="brand-card">Philips</div>
+<div class="brand-card">Regal</div>
+<div class="brand-card">Altus</div>
+<div class="brand-card">Ariston</div>
+<div class="brand-card">SEG</div>
+<div class="brand-card">Mitsubishi</div>
+<div class="brand-card">Vaillant</div>
+<div class="brand-card">Viessmann</div>
+<div class="brand-card">İmmergaz</div>
+<div class="brand-card">Toshiba</div>
+<div class="brand-card">Alarko</div>
+<div class="brand-card">Eca</div>
+<div class="brand-card">Ferroli</div>
+<div class="brand-card">Copa</div>
+<div class="brand-card">Elektrolux</div>
+<div class="brand-card">Sharp</div>
+<div class="brand-card">Buderus</div>
+<div class="brand-card">Aırfel</div>
+<div class="brand-card">Indesit</div>
+<div class="brand-card">Premier</div>
+</div>
+</section>
+</section>
+<section id="hizmetler">
+<div class="sec-header">
+<h3>Hizmetlerimiz</h3>
+<div class="small muted">İhtiyacınıza uygun hizmetler</div>
+</div>
+<div class="cards">
+<div class="card">
+<h4>Beyaz eşya &amp; Küçük ev aletleri </h4>
+<p class="small muted">Beyaz eşya onarımı ve bakımı. Küçük ev aletleri tamiri.</p>
+</div>
+<div class="card">
+<h4>Klima &amp; Kombi</h4>
+<p class="small muted">Klima montajı ve arıza bakım-onarım. Kombi arıza ve bakım-onarım ve petek temizliği.</p>
+</div>
+<div class="card">
+<h4>Elektronik Kart Tamiri</h4>
+<p class="small muted">Elektronik kart tamiri ve onarımı </p>
+</div>
+</div>
+</section>
+<section id="iletisim">
+<div class="sec-header">
+<h3>İletişim</h3>
+<div class="small muted">Bize ulaşın</div>
+</div>
+<div class="footer-grid">
+<div>
+<form onsubmit="event.preventDefault(); alert('Form gönderildi (örnek). Gerçek sunucuya bağlanmadı.');" style="display:flex;flex-direction:column;gap:8px">
+<input placeholder="Adınız" required="" style="padding:12px;border-radius:8px;border:1px solid #e6eef8"/>
+<input placeholder="E-posta" required="" style="padding:12px;border-radius:8px;border:1px solid #e6eef8" type="email"/>
+<textarea placeholder="Mesajınız" rows="4" style="padding:12px;border-radius:8px;border:1px solid #e6eef8"></textarea>
+<div style="display:flex;gap:8px;align-items:center">
+<button class="cta" type="submit">Gönder</button>
+<div id="contactButtons" style="display:flex;gap:10px;margin-top:15px;flex-wrap:wrap;">
+<button id="callBtn" style="background-color:#0078FF;color:white;padding:12px 20px;border:none;border-radius:10px;cursor:pointer;font-weight:600;">
+          📞 Telefonla Ara
+  </button>
+<a href="https://wa.me/905302193306?text=Merhaba,%20Bursa%20Hak%20Soğutma%20sitesinden%20yazıyorum." style="background-color:#25D366;color:white;padding:12px 20px;border-radius:10px;text-decoration:none;font-weight:600;display:inline-block;">
+   💬 WhatsApp ile mesaj gönder
+</a></div>
+</div></form>
+</div>
+<div>
+
+<div style="margin-bottom:12px"><strong>Adresimiz</strong></div>
+<div class="small muted">Cadde Adı No: 123, İlçe, Şehir, Türkiye</div>
+<div style="height:12px"></div>
+<div class="map-wrap">
+<!-- Google Maps iframe:  Burada kendi ofis koordinatlarınıza göre src'yi güncelleyin. -->
+<iframe allowfullscreen="" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3046.5640597133333!2d29.004756999999994!3d40.2187592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ca15cbdb97f461%3A0xc72e25d73f96b5bb!2sH%C3%BCrriyet%2C%204.%20Orta%20Sk.%20No%2F2%2C%2016160%20Osmangazi%CC%87%2FBursa!5e0!3m2!1str!2str!4v1760300388848!5m2!1str!2str" style="border:0;" width="600"></iframe></div>
+<div class="small muted" style="margin-top:12px">Çalışma Saatleri: Hafta içi 09:00 - 18:00</div>
+</div>
+</div>
+</section>
+<footer>
+<div class="container" style="padding:0">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap">
+<div>
+<strong>BURSA HAK SOĞUTMA </strong>
+<div class="small muted">Tüm hakları saklıdır. © <span id="year"></span></div>
+</div>
+<div class="small muted">Adres:Hürriyet, 4. Orta Sk. No/2, 16160 Osmangazi̇/Bursa • Telefon: +90 505 514 33 06</div>
+<div style="display:flex;gap:8px;align-items:center">
+</div>
+</div>
+</div>
+</footer>
+</div>
+</main>
+<script>
+    // Replace placeholders:
+    // 1) logoPlaceholder: yerine <img> ekleyin veya tekst olarak değiştirin
+    // 2) telefon numaralarını +90... ile güncelleyin
+    // 3) Google Maps iframe src'sini ofis koordinatlarınıza göre değiştirin
+    // 4) whatsappLink href -> 'https://wa.me/905XXXXXXXXX?text=Merhaba' şeklinde güncelleyin
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // örnek whatsapp link (değiştirin):
+    const phone = '905XXXXXXXXX'; // +90 şeklinde yazın
+    document.getElementById('whatsappLink').href = 'https://wa.me/' + phone + '?text=Merhaba,%20site%20üzerinden%20ulaşıyorum.';
+
+    // Basit "active menu" scroll behavior
+    const sections = document.querySelectorAll('section');
+    const navlinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', ()=>{
+      let fromTop = window.scrollY + 120;
+      sections.forEach(sec =>{
+        if(sec.offsetTop <= fromTop && sec.offsetTop + sec.offsetHeight > fromTop){
+          navlinks.forEach(l=>l.classList.remove('active'));
+          const id = '#' + sec.id;
+          const active = document.querySelector('.nav-link[href="'+id+'"]');
+          if(active) active.classList.add('active');
+        }
+      })
+    })
+
+    // Önerilen dağıtım (GitHub Pages / Netlify):
+    /*
+      Nasıl deploy edilir (kısa rehber):
+      1) GitHub Pages: repository oluşturun, bu dosyayı index.html olarak ekleyin -> Settings > Pages > Deploy from main branch. Daha sonra GoDaddy'de DNS'e CNAME (yourdomain.com -> <username>.github.io) veya A kayıtları ekleyin.
+      2) Netlify: siteyi bir Git deposuna push'layın, Netlify hesabına bağlayın ve deploy edin. Netlify size domain bağlama adımlarını verir (CNAME veya A kayıtları). Netlify ücretsiz planı genelde küçük işletmeler için yeterlidir.
+
+      GoDaddy domainini yönlendirme (kısa):
+      - Eğer GitHub Pages kullanıyorsanız: GoDaddy DNS'te CNAME (www) yönlendirmesi yapın ve A kayıtlarını GitHub Pages IP'lerine göre ekleyin.
+      - Eğer Netlify kullanıyorsanız: Netlify size DNS hedefi verir; GoDaddy DNS panelinden bu hedefe göre CNAME veya A kaydı eklemeniz yeterlidir.
+
+      Not: Alan adı ve hosting DNS değişiklikleri 1-24 saat arasında (genelde birkaç dakika-saat) yayılabilir.
+    */
+  </script>
+</body>
+</html>

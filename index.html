@@ -627,9 +627,12 @@ document.addEventListener("DOMContentLoaded", () => {
     transform-origin: top center;
   }
   .hero {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display:grid;
+  grid-template-columns:1fr 420px;
+  gap:28px;
+  align-items:center;
+  padding:40px 0;
+}
   }
 }
 </style>
